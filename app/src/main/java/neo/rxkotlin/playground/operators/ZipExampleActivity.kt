@@ -6,23 +6,22 @@ import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_example.*
 import neo.rxkotlin.playground.BaseActivity
 import neo.rxkotlin.playground.R
-import neo.rxkotlin.playground.model.ApiUser
 import neo.rxkotlin.playground.model.User
 import neo.rxkotlin.playground.utility.Utils
 import neo.rxkotlin.playground.utility.appendText
 
 /**
  * @author Naveen T P
- * @since 25/08/18
+ * @since 26/08/18
  */
+class ZipExampleActivity : BaseActivity() {
 
-class MapExampleActivity : BaseActivity() {
-
-    val TAG = MapExampleActivity::class.java.simpleName
+    private val TAG = ZipExampleActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,31 +31,43 @@ class MapExampleActivity : BaseActivity() {
     }
 
     private fun doSomething() {
-        getObservable()
+        Observable.zip<List<User>, List<User>, List<User>>(getCricketLoversList(), getFootballLoversList(),
+                BiFunction<List<User>, List<User>, List<User>> { cricket, football -> Utils().filterUserWhoLovesBothGames(cricket, football) })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map { apiUser -> Utils().convertApiUserToUser(apiUser) }
                 .subscribe(getObserver())
+
     }
 
-    private fun getObservable(): Observable<List<ApiUser>> {
-        return Observable.create<List<ApiUser>> { emitter ->
-            if (!emitter.isDisposed) {
-                emitter.onNext(Utils().getApiUsersList())
-                emitter.onComplete()
+    private fun getCricketLoversList(): Observable<List<User>> {
+        return Observable.create<List<User>> {
+            if (!it.isDisposed) {
+                it.onNext(Utils().getCricketLovers())
+                it.onComplete()
+            }
+        }
+    }
+
+    private fun getFootballLoversList(): Observable<List<User>> {
+        return Observable.create<List<User>> {
+            if (!it.isDisposed) {
+                it.onNext(Utils().getFootballLovers())
+                it.onComplete()
             }
         }
     }
 
     private fun getObserver(): Observer<List<User>> {
         return object : Observer<List<User>> {
+
             override fun onSubscribe(d: Disposable) {
                 Log.d(TAG, "onSubscribe: ${d.isDisposed}")
+                tv_result.appendText("onSubscribe: Resulting List of lovers who loves both cricket and football")
             }
 
             override fun onNext(userList: List<User>) {
-                tv_result.appendText("onNext: Mapping ApiUser to User object")
-                tv_result.appendText("$userList")
+
+                tv_result.appendText("onNext: $userList")
             }
 
             override fun onComplete() {
@@ -66,14 +77,14 @@ class MapExampleActivity : BaseActivity() {
             override fun onError(e: Throwable) {
                 Log.d(TAG, "onError: ${e.message}")
             }
-
         }
     }
 
     private fun displayInitialData() {
-        tv_explanation.appendText("The Map operator applies a function of your choosing to " +
-                "each item emitted by the source Observable, and returns an Observable that emits " +
-                "the results of these function applications.")
-        tv_explanation.appendText("Items are:\n${Utils().getApiUsersList()}")
+        tv_explanation.appendText("The Zip operator used to combine two observables and " +
+                "strictly pairs emitted items from observables. " +
+                "It waits for both (or more) items to arrive then merges them.")
+        tv_explanation.appendText("Two different observables:\nCricket Lovers: ${Utils().getCricketLovers()}")
+        tv_explanation.appendText("Football Lovers: ${Utils().getFootballLovers()}")
     }
 }

@@ -21,5 +21,5 @@ fun <T : Activity> KClass<T>.start(activity: Activity, finish: Boolean = false) 
 
 fun TextView.appendText(value: String) {
     this.append(value)
-    this.append("\n")
+    this.append("\n\n")
 }

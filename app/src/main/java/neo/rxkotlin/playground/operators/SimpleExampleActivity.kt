@@ -42,6 +42,7 @@ class SimpleExampleActivity : BaseActivity() {
         return object : Observer<String> {
             override fun onSubscribe(d: Disposable) {
                 Log.d(TAG, "onSubscribe: ${d.isDisposed}")
+                tv_result.appendText("onSubscribe: Emitting items..")
             }
 
             override fun onNext(value: String) {
@@ -61,7 +62,6 @@ class SimpleExampleActivity : BaseActivity() {
 
     private fun displayInitialData() {
         tv_explanation.appendText("The Just operator converts an item into an Observable that emits that item.")
-        tv_explanation.appendText("")
-        tv_explanation.appendText("items are: Cricket, Football")
+        tv_explanation.appendText("Items to be emitted are: Cricket, Football")
     }
 }

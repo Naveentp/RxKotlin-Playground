@@ -6,5 +6,4 @@ package neo.rxkotlin.playground.model
  */
 
 data class User(val id: Long,
-                val name: String,
-                val isFollowing: Boolean = false)
+                val name: String)

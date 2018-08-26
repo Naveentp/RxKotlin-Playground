@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import neo.rxkotlin.playground.operators.MapExampleActivity
 import neo.rxkotlin.playground.operators.SimpleExampleActivity
+import neo.rxkotlin.playground.operators.ZipExampleActivity
 import neo.rxkotlin.playground.utility.start
 
 /**
@@ -21,4 +22,7 @@ class OperatorsActivity : BaseActivity() {
     fun startSimpleExampleActivity(v: View) = SimpleExampleActivity::class.start(this)
 
     fun startMapExampleActivity(v: View) = MapExampleActivity::class.start(this)
+
+    fun startZipExampleActivity(v: View) = ZipExampleActivity::class.start(this)
+
 }
