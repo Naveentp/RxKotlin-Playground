@@ -25,4 +25,10 @@
         android:onClick="startZipExampleActivity"
         android:text="@string/zip" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startFilterExampleActivity"
+        android:text="@string/filter" />
+
 </LinearLayout>

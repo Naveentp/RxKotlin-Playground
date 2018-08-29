@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">RxKotlin Playground</string>
-    <string name="do_something">Do Something</string>
+    <string name="apply_operator">Apply Operator</string>
     <string name="simple_example">Simple Example</string>
     <string name="map">Map</string>
     <string name="zip">Zip</string>
+    <string name="filter">Filter</string>
 </resources>

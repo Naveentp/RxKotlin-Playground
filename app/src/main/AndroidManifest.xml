@@ -20,6 +20,7 @@
         <activity android:name="neo.rxkotlin.playground.operators.SimpleExampleActivity" />
         <activity android:name="neo.rxkotlin.playground.operators.MapExampleActivity" />
         <activity android:name=".operators.ZipExampleActivity" />
+        <activity android:name=".operators.FilterExampleActivity" />
     </application>
 
 </manifest>

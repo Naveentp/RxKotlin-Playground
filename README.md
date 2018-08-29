@@ -7,6 +7,7 @@ Learning reactive extensions in Kotlin.
     - [SimpleExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/SimpleExampleActivity.kt) - using `just` operator
     - [MapExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/MapExampleActivity.kt) - using `map` operator
     - [ZipExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/ZipExampleActivity.kt) - using `zip` operator
+    - [FilterExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/FilterExampleActivity.kt) - using `filter` operator
 
 
 
