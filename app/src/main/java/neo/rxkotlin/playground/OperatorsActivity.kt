@@ -2,10 +2,7 @@ package neo.rxkotlin.playground
 
 import android.os.Bundle
 import android.view.View
-import neo.rxkotlin.playground.operators.FilterExampleActivity
-import neo.rxkotlin.playground.operators.MapExampleActivity
-import neo.rxkotlin.playground.operators.SimpleExampleActivity
-import neo.rxkotlin.playground.operators.ZipExampleActivity
+import neo.rxkotlin.playground.operators.*
 import neo.rxkotlin.playground.utility.start
 
 /**
@@ -27,5 +24,9 @@ class OperatorsActivity : BaseActivity() {
     fun startZipExampleActivity(v: View) = ZipExampleActivity::class.start(this)
 
     fun startFilterExampleActivity(v: View) = FilterExampleActivity::class.start(this)
+
+    fun startTakeExampleActivity(v: View) = TakeExampleActivity::class.start(this)
+
+    fun startReduceExampleActivity(v: View) = ReduceExampleActivity::class.start(this)
 
 }

@@ -27,7 +27,7 @@
                 android:id="@+id/btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/do_something" />
+                android:text="@string/apply_operator" />
 
             <TextView
                 android:id="@+id/tv_result"

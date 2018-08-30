@@ -21,6 +21,8 @@
         <activity android:name="neo.rxkotlin.playground.operators.MapExampleActivity" />
         <activity android:name=".operators.ZipExampleActivity" />
         <activity android:name=".operators.FilterExampleActivity" />
+        <activity android:name=".operators.TakeExampleActivity" />
+        <activity android:name=".operators.ReduceExampleActivity" />
     </application>
 
 </manifest>

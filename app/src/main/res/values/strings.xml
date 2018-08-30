@@ -5,4 +5,6 @@
     <string name="map">Map</string>
     <string name="zip">Zip</string>
     <string name="filter">Filter</string>
+    <string name="take">Take</string>
+    <string name="reduce">Reduce</string>
 </resources>
