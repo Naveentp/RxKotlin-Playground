@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_example.*
 import neo.rxkotlin.playground.BaseActivity
 import neo.rxkotlin.playground.R
@@ -27,6 +29,8 @@ class FilterExampleActivity : BaseActivity() {
 
     private fun doSomething() {
         Observable.just(1, 2, 3, 4, 5, 6)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .filter { item -> item % 2 == 0 }
                 .subscribe(getObserver())
     }

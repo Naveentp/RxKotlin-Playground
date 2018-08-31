@@ -5,20 +5,18 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_example.*
 import neo.rxkotlin.playground.R
 import neo.rxkotlin.playground.utility.appendText
 
 /**
  * @author Naveen T P
- * @since 30/08/18
+ * @since 31/08/18
  */
-class TakeExampleActivity : AppCompatActivity() {
+class FlatMapExampleActivity : AppCompatActivity() {
 
-    private val TAG = TakeExampleActivity::class.java.simpleName
+    private val TAG = FlatMapExampleActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +26,22 @@ class TakeExampleActivity : AppCompatActivity() {
     }
 
     private fun doSomething() {
-        Observable.just(1, 2, 3, 4, 5, 6)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .take(3)
+        getObservable()
+                .flatMap { integer -> getAddObservable(integer, integer) }
+                .flatMap { integer -> getMultiplyObservable(integer, integer) }
                 .subscribe(getObserver())
+    }
+
+    private fun getObservable(): Observable<Int> {
+        return Observable.just(1, 2, 3, 4, 5)
+    }
+
+    private fun getAddObservable(first: Int, second: Int): Observable<Int> {
+        return Observable.just(first + second)
+    }
+
+    private fun getMultiplyObservable(first: Int, second: Int): Observable<Int> {
+        return Observable.just(first * second)
     }
 
     private fun getObserver(): Observer<Int> {
@@ -40,7 +49,6 @@ class TakeExampleActivity : AppCompatActivity() {
 
             override fun onSubscribe(d: Disposable) {
                 Log.d(TAG, "onSubscribe: ${d.isDisposed}")
-                tv_result.appendText("Taking only first 3 integers")
             }
 
             override fun onNext(t: Int) {
@@ -52,13 +60,18 @@ class TakeExampleActivity : AppCompatActivity() {
             }
 
             override fun onError(e: Throwable) {
-                Log.d(TAG, "onError: ${e.message}")
+                tv_result.appendText("onError: ${e.message}")
             }
+
         }
     }
 
     private fun displayInitialData() {
-        tv_explanation.appendText("The Take operator emit only the first n items emitted by an Observable")
-        tv_explanation.appendText("Initial items are: 1, 2, 3, 4, 5, 6")
+        tv_explanation.appendText("The FlatMap operator transform the items emitted by an " +
+                "Observable into Observables, then flatten the emissions from those into a single Observable")
+        tv_explanation.appendText("Initial items are: 1, 2, 3, 4, 5")
+        tv_explanation.appendText("Output: Each emitted item is added by itself and multiplied by itself and emitted as output..")
+        tv_explanation.appendText("Example: Emitted value (1) => (1+1 = 2) => (2*2 = 4) => 4")
     }
 }
+

@@ -7,4 +7,6 @@
     <string name="filter">Filter</string>
     <string name="take">Take</string>
     <string name="reduce">Reduce</string>
+  <string name="skip">Skip</string>
+  <string name="flatmap">FlatMap</string>
 </resources>

@@ -23,6 +23,8 @@
         <activity android:name=".operators.FilterExampleActivity" />
         <activity android:name=".operators.TakeExampleActivity" />
         <activity android:name=".operators.ReduceExampleActivity" />
+        <activity android:name=".operators.SkipExampleActivity"/>
+        <activity android:name=".operators.FlatMapExampleActivity"/>
     </application>
 
 </manifest>

@@ -5,20 +5,18 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_example.*
 import neo.rxkotlin.playground.R
 import neo.rxkotlin.playground.utility.appendText
 
 /**
  * @author Naveen T P
- * @since 30/08/18
+ * @since 31/08/18
  */
-class TakeExampleActivity : AppCompatActivity() {
+class SkipExampleActivity : AppCompatActivity() {
 
-    private val TAG = TakeExampleActivity::class.java.simpleName
+    private val TAG = SkipExampleActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +26,20 @@ class TakeExampleActivity : AppCompatActivity() {
     }
 
     private fun doSomething() {
-        Observable.just(1, 2, 3, 4, 5, 6)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .take(3)
+        Observable.just("One", "Two", "Three", "Four", "Five", "Six")
+                .skip(3)
                 .subscribe(getObserver())
     }
 
-    private fun getObserver(): Observer<Int> {
-        return object : Observer<Int> {
+    private fun getObserver(): Observer<String> {
+        return object : Observer<String> {
 
             override fun onSubscribe(d: Disposable) {
                 Log.d(TAG, "onSubscribe: ${d.isDisposed}")
-                tv_result.appendText("Taking only first 3 integers")
+                tv_result.appendText("Skipping first 3 items..")
             }
 
-            override fun onNext(t: Int) {
+            override fun onNext(t: String) {
                 tv_result.appendText("onNext: $t")
             }
 
@@ -58,7 +54,7 @@ class TakeExampleActivity : AppCompatActivity() {
     }
 
     private fun displayInitialData() {
-        tv_explanation.appendText("The Take operator emit only the first n items emitted by an Observable")
-        tv_explanation.appendText("Initial items are: 1, 2, 3, 4, 5, 6")
+        tv_explanation.appendText("The Skip operator suppress the first n items emitted by an Observable")
+        tv_explanation.appendText("Initial items are: \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\"")
     }
 }

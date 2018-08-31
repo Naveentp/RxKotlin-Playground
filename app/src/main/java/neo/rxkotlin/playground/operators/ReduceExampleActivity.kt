@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.reactivex.MaybeObserver
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_example.*
 import neo.rxkotlin.playground.R
 import neo.rxkotlin.playground.utility.appendText
@@ -27,6 +29,8 @@ class ReduceExampleActivity : AppCompatActivity() {
 
     private fun doSomething() {
         Observable.just(1, 3, 5, 7, 9)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .reduce { t1: Int, t2: Int -> t1 + t2 }
                 .subscribe(getObserver())
 

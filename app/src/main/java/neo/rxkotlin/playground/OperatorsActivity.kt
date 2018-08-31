@@ -29,4 +29,8 @@ class OperatorsActivity : BaseActivity() {
 
     fun startReduceExampleActivity(v: View) = ReduceExampleActivity::class.start(this)
 
+    fun startSkipExampleActivity(v: View) = SkipExampleActivity::class.start(this)
+
+    fun startFlatMapExampleActivity(v: View) = FlatMapExampleActivity::class.start(this)
+
 }

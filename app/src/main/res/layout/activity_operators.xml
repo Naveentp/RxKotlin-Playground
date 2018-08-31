@@ -47,6 +47,18 @@
             android:onClick="startReduceExampleActivity"
             android:text="@string/reduce" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startSkipExampleActivity"
+            android:text="@string/skip" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startFlatMapExampleActivity"
+            android:text="@string/flatmap" />
+
     </LinearLayout>
 
 </ScrollView>
