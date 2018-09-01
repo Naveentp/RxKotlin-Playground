@@ -10,7 +10,9 @@ Learning reactive extensions in Kotlin.
     - [FilterExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/FilterExampleActivity.kt) - using `filter` operator
     - [TakeExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/TakeExampleActivity.kt) - using `take` operator
     - [ReduceExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/ReduceExampleActivity.kt) - using `reduce` operator
-
+    - [FlatMapExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/FlatMapExampleActivity.kt) - using `flatMap` operator
+    - [SkipExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/SkipExampleActivity.kt) - using `skip` operator
+    
 
 
 #### Lets become friends
