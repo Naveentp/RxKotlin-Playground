@@ -3,15 +3,18 @@
 Learning reactive extensions in Kotlin.
 
 #### RxKotlin Examples in the project
+- Observable Creation
+    - [JustObservableActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/observablesCreation/JustObservableActivity.kt) - using `just` operator
+
 - Operators
-    - [SimpleExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/SimpleExampleActivity.kt) - using `just` operator
-    - [MapExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/MapExampleActivity.kt) - using `map` operator
-    - [ZipExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/ZipExampleActivity.kt) - using `zip` operator
-    - [FilterExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/FilterExampleActivity.kt) - using `filter` operator
-    - [TakeExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/TakeExampleActivity.kt) - using `take` operator
-    - [ReduceExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/ReduceExampleActivity.kt) - using `reduce` operator
-    - [FlatMapExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/FlatMapExampleActivity.kt) - using `flatMap` operator
-    - [SkipExampleActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/operators/SkipExampleActivity.kt) - using `skip` operator
+    - [MapOperatorActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/operators/MapOperatorActivity.kt) - using `map` operator
+    - [ZipOperatorActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/operators/ZipOperatorActivity.kt) - using `zip` operator
+    - [FilterOperatorActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/operators/FilterOperatorActivity.kt) - using `filter` operator
+    - [TakeOperatorActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/operators/TakeOperatorActivity.kt) - using `take` operator
+    - [ReduceOperatorActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/operators/ReduceOperatorActivity.kt) - using `reduce` operator
+    - [FlatMapOperatorActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/operators/FlatMapOperatorActivity.kt) - using `flatMap` operator
+    - [SkipOperatorActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/operators/SkipOperatorActivity.kt) - using `skip` operator
+    - [DistinctOperatorActivity](https://github.com/Naveentp/RxKotlin-Playground/blob/master/app/src/main/java/neo/rxkotlin/playground/view/operators/DistinctOperatorActivity.kt) - using `distinct` operator
     
 
 

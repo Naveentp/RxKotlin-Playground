@@ -1,4 +1,4 @@
-package neo.rxkotlin.playground.operators
+package neo.rxkotlin.playground.view.operators
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -14,9 +14,9 @@ import neo.rxkotlin.playground.utility.appendText
  * @author Naveen T P
  * @since 31/08/18
  */
-class FlatMapExampleActivity : AppCompatActivity() {
+class FlatMapOperatorActivity : AppCompatActivity() {
 
-    private val TAG = FlatMapExampleActivity::class.java.simpleName
+    private val TAG = FlatMapOperatorActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

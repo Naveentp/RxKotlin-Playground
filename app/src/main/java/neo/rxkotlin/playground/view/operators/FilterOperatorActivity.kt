@@ -1,22 +1,24 @@
-package neo.rxkotlin.playground.operators
+package neo.rxkotlin.playground.view.operators
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_example.*
+import neo.rxkotlin.playground.BaseActivity
 import neo.rxkotlin.playground.R
 import neo.rxkotlin.playground.utility.appendText
 
 /**
  * @author Naveen T P
- * @since 31/08/18
+ * @since 29/08/18
  */
-class SkipExampleActivity : AppCompatActivity() {
+class FilterOperatorActivity : BaseActivity() {
 
-    private val TAG = SkipExampleActivity::class.java.simpleName
+    private val TAG = FilterOperatorActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,20 +28,22 @@ class SkipExampleActivity : AppCompatActivity() {
     }
 
     private fun doSomething() {
-        Observable.just("One", "Two", "Three", "Four", "Five", "Six")
-                .skip(3)
+        Observable.just(1, 2, 3, 4, 5, 6)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter { item -> item % 2 == 0 }
                 .subscribe(getObserver())
     }
 
-    private fun getObserver(): Observer<String> {
-        return object : Observer<String> {
+    private fun getObserver(): Observer<Int> {
+        return object : Observer<Int> {
 
             override fun onSubscribe(d: Disposable) {
                 Log.d(TAG, "onSubscribe: ${d.isDisposed}")
-                tv_result.appendText("Skipping first 3 items..")
+                tv_result.appendText("Filtering only even numbers...")
             }
 
-            override fun onNext(t: String) {
+            override fun onNext(t: Int) {
                 tv_result.appendText("onNext: $t")
             }
 
@@ -54,7 +58,10 @@ class SkipExampleActivity : AppCompatActivity() {
     }
 
     private fun displayInitialData() {
-        tv_explanation.appendText("The Skip operator suppress the first n items emitted by an Observable")
-        tv_explanation.appendText("Initial items are: \"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\"")
+        tv_explanation.appendText("The Filter operator filters an Observable by only " +
+                "allowing items through that pass a test that you specify in the form of a predicate function..")
+        tv_explanation.appendText("Initial items are: 1, 2, 3, 4, 5, 6")
     }
+
+
 }

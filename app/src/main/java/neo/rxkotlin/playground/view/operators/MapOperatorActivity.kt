@@ -1,4 +1,4 @@
-package neo.rxkotlin.playground.operators
+package neo.rxkotlin.playground.view.operators
 
 import android.os.Bundle
 import android.util.Log
@@ -20,9 +20,9 @@ import neo.rxkotlin.playground.utility.appendText
  * @since 25/08/18
  */
 
-class MapExampleActivity : BaseActivity() {
+class MapOperatorActivity : BaseActivity() {
 
-    val TAG = MapExampleActivity::class.java.simpleName
+    val TAG = MapOperatorActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

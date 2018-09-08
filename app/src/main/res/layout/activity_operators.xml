@@ -3,19 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="neo.rxkotlin.playground.OperatorsActivity">
+    tools:context="neo.rxkotlin.playground.view.home.OperatorsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:orientation="vertical">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="startSimpleExampleActivity"
-            android:text="@string/simple_example" />
 
         <Button
             android:layout_width="match_parent"
@@ -58,6 +52,12 @@
             android:layout_height="wrap_content"
             android:onClick="startFlatMapExampleActivity"
             android:text="@string/flatmap" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startDistinctExampleActivity"
+            android:text="@string/distinct" />
 
     </LinearLayout>
 

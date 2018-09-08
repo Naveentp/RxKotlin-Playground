@@ -1,4 +1,4 @@
-package neo.rxkotlin.playground.operators
+package neo.rxkotlin.playground.view.observablesCreation
 
 import android.os.Bundle
 import android.util.Log
@@ -12,13 +12,15 @@ import neo.rxkotlin.playground.BaseActivity
 import neo.rxkotlin.playground.R
 import neo.rxkotlin.playground.utility.appendText
 
-/**
- * @author Naveen T P
- * @since 29/08/18
- */
-class FilterExampleActivity : BaseActivity() {
 
-    private val TAG = FilterExampleActivity::class.java.simpleName
+/**
+* @author Naveen T P
+* @since 25/08/18
+*/
+
+class JustObservableActivity : BaseActivity() {
+
+    private val TAG = JustObservableActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,23 +30,23 @@ class FilterExampleActivity : BaseActivity() {
     }
 
     private fun doSomething() {
-        Observable.just(1, 2, 3, 4, 5, 6)
+        getObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .filter { item -> item % 2 == 0 }
                 .subscribe(getObserver())
     }
 
-    private fun getObserver(): Observer<Int> {
-        return object : Observer<Int> {
+    private fun getObservable(): Observable<String> = Observable.just("Cricket", "Football")
 
+    private fun getObserver(): Observer<String> {
+        return object : Observer<String> {
             override fun onSubscribe(d: Disposable) {
                 Log.d(TAG, "onSubscribe: ${d.isDisposed}")
-                tv_result.appendText("Filtering only even numbers...")
+                tv_result.appendText("onSubscribe: Emitting items..")
             }
 
-            override fun onNext(t: Int) {
-                tv_result.appendText("onNext: $t")
+            override fun onNext(value: String) {
+                tv_result.appendText("onNext : value : $value")
             }
 
             override fun onComplete() {
@@ -52,16 +54,14 @@ class FilterExampleActivity : BaseActivity() {
             }
 
             override fun onError(e: Throwable) {
+                tv_result.appendText("onError: ${e.message}")
                 Log.d(TAG, "onError: ${e.message}")
             }
         }
     }
 
     private fun displayInitialData() {
-        tv_explanation.appendText("The Filter operator filters an Observable by only " +
-                "allowing items through that pass a test that you specify in the form of a predicate function..")
-        tv_explanation.appendText("Initial items are: 1, 2, 3, 4, 5, 6")
+        tv_explanation.appendText("The Just operator converts an item into an Observable that emits that item.")
+        tv_explanation.appendText("Items to be emitted are: Cricket, Football")
     }
-
-
 }

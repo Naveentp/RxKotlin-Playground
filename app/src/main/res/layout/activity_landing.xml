@@ -5,13 +5,19 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context="neo.rxkotlin.playground.LandingPageActivity">
+    tools:context="neo.rxkotlin.playground.view.home.LandingPageActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="startObservablesCreationActivity"
+        android:text="@string/creating_observables" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="startOperatorsActivity"
-        android:text="Operators" />
+        android:text="@string/operators" />
 
 
 </LinearLayout>

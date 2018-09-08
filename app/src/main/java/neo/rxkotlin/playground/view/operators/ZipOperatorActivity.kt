@@ -1,4 +1,4 @@
-package neo.rxkotlin.playground.operators
+package neo.rxkotlin.playground.view.operators
 
 import android.os.Bundle
 import android.util.Log
@@ -19,9 +19,9 @@ import neo.rxkotlin.playground.utility.appendText
  * @author Naveen T P
  * @since 26/08/18
  */
-class ZipExampleActivity : BaseActivity() {
+class ZipOperatorActivity : BaseActivity() {
 
-    private val TAG = ZipExampleActivity::class.java.simpleName
+    private val TAG = ZipOperatorActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -9,22 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="neo.rxkotlin.playground.LandingPageActivity">
+        <activity android:name="neo.rxkotlin.playground.view.home.LandingPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="neo.rxkotlin.playground.OperatorsActivity" />
-        <activity android:name="neo.rxkotlin.playground.operators.SimpleExampleActivity" />
-        <activity android:name="neo.rxkotlin.playground.operators.MapExampleActivity" />
-        <activity android:name=".operators.ZipExampleActivity" />
-        <activity android:name=".operators.FilterExampleActivity" />
-        <activity android:name=".operators.TakeExampleActivity" />
-        <activity android:name=".operators.ReduceExampleActivity" />
-        <activity android:name=".operators.SkipExampleActivity"/>
-        <activity android:name=".operators.FlatMapExampleActivity"/>
+        <activity android:name="neo.rxkotlin.playground.view.home.OperatorsActivity" />
+        <activity android:name="neo.rxkotlin.playground.view.observablesCreation.JustObservableActivity" />
+        <activity android:name="neo.rxkotlin.playground.view.operators.MapOperatorActivity" />
+        <activity android:name="neo.rxkotlin.playground.view.operators.ZipOperatorActivity" />
+        <activity android:name="neo.rxkotlin.playground.view.operators.FilterOperatorActivity" />
+        <activity android:name="neo.rxkotlin.playground.view.operators.TakeOperatorActivity" />
+        <activity android:name="neo.rxkotlin.playground.view.operators.ReduceOperatorActivity" />
+        <activity android:name="neo.rxkotlin.playground.view.operators.SkipOperatorActivity"/>
+        <activity android:name="neo.rxkotlin.playground.view.operators.FlatMapOperatorActivity"/>
+        <activity android:name="neo.rxkotlin.playground.view.operators.DistinctOperatorActivity" />
+        <activity android:name=".view.home.ObservablesCreationActivity" />
     </application>
 
 </manifest>

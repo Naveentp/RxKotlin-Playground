@@ -9,4 +9,8 @@
     <string name="reduce">Reduce</string>
   <string name="skip">Skip</string>
   <string name="flatmap">FlatMap</string>
+    <string name="distinct">Distinct</string>
+    <string name="just">just</string>
+    <string name="operators">Operators</string>
+    <string name="creating_observables">Observables Creation</string>
 </resources>

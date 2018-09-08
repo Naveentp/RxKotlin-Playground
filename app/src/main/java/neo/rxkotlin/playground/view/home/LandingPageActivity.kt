@@ -1,8 +1,9 @@
-package neo.rxkotlin.playground
+package neo.rxkotlin.playground.view.home
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import neo.rxkotlin.playground.R
 import neo.rxkotlin.playground.utility.start
 
 /**
@@ -17,7 +18,7 @@ class LandingPageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_landing)
     }
 
-    fun startOperatorsActivity(v: View) {
-        OperatorsActivity::class.start(this)
-    }
+    fun startObservablesCreationActivity(v: View) = ObservablesCreationActivity::class.start(this)
+
+    fun startOperatorsActivity(v: View) = OperatorsActivity::class.start(this)
 }

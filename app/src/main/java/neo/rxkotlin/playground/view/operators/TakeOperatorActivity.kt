@@ -1,6 +1,7 @@
-package neo.rxkotlin.playground.operators
+package neo.rxkotlin.playground.view.operators
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.Observer
@@ -8,19 +9,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_example.*
-import neo.rxkotlin.playground.BaseActivity
 import neo.rxkotlin.playground.R
 import neo.rxkotlin.playground.utility.appendText
 
-
 /**
-* @author Naveen T P
-* @since 25/08/18
-*/
+ * @author Naveen T P
+ * @since 30/08/18
+ */
+class TakeOperatorActivity : AppCompatActivity() {
 
-class SimpleExampleActivity : BaseActivity() {
-
-    private val TAG = SimpleExampleActivity::class.java.simpleName
+    private val TAG = TakeOperatorActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,23 +28,23 @@ class SimpleExampleActivity : BaseActivity() {
     }
 
     private fun doSomething() {
-        getObservable()
+        Observable.just(1, 2, 3, 4, 5, 6)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .take(3)
                 .subscribe(getObserver())
     }
 
-    private fun getObservable(): Observable<String> = Observable.just("Cricket", "Football")
+    private fun getObserver(): Observer<Int> {
+        return object : Observer<Int> {
 
-    private fun getObserver(): Observer<String> {
-        return object : Observer<String> {
             override fun onSubscribe(d: Disposable) {
                 Log.d(TAG, "onSubscribe: ${d.isDisposed}")
-                tv_result.appendText("onSubscribe: Emitting items..")
+                tv_result.appendText("Taking only first 3 integers")
             }
 
-            override fun onNext(value: String) {
-                tv_result.appendText("onNext : value : $value")
+            override fun onNext(t: Int) {
+                tv_result.appendText("onNext: $t")
             }
 
             override fun onComplete() {
@@ -54,14 +52,13 @@ class SimpleExampleActivity : BaseActivity() {
             }
 
             override fun onError(e: Throwable) {
-                tv_result.appendText("onError: ${e.message}")
                 Log.d(TAG, "onError: ${e.message}")
             }
         }
     }
 
     private fun displayInitialData() {
-        tv_explanation.appendText("The Just operator converts an item into an Observable that emits that item.")
-        tv_explanation.appendText("Items to be emitted are: Cricket, Football")
+        tv_explanation.appendText("The Take operator emit only the first n items emitted by an Observable")
+        tv_explanation.appendText("Initial items are: 1, 2, 3, 4, 5, 6")
     }
 }

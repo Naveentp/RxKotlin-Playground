@@ -1,4 +1,4 @@
-package neo.rxkotlin.playground.operators
+package neo.rxkotlin.playground.view.operators
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -16,9 +16,9 @@ import neo.rxkotlin.playground.utility.appendText
  * @author Naveen T P
  * @since 30/08/18
  */
-class ReduceExampleActivity : AppCompatActivity() {
+class ReduceOperatorActivity : AppCompatActivity() {
 
-    private val TAG = ReduceExampleActivity::class.java.simpleName
+    private val TAG = ReduceOperatorActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

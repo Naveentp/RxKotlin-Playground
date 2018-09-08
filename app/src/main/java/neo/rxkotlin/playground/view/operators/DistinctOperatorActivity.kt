@@ -1,7 +1,6 @@
-package neo.rxkotlin.playground.operators
+package neo.rxkotlin.playground.view.operators
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.Observer
@@ -9,16 +8,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_example.*
+import neo.rxkotlin.playground.BaseActivity
 import neo.rxkotlin.playground.R
 import neo.rxkotlin.playground.utility.appendText
 
 /**
  * @author Naveen T P
- * @since 30/08/18
+ * @since 08/09/18
  */
-class TakeExampleActivity : AppCompatActivity() {
+class DistinctOperatorActivity : BaseActivity() {
 
-    private val TAG = TakeExampleActivity::class.java.simpleName
+    private val TAG = DistinctOperatorActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +28,22 @@ class TakeExampleActivity : AppCompatActivity() {
     }
 
     private fun doSomething() {
-        Observable.just(1, 2, 3, 4, 5, 6)
+        Observable.just("Once", "Once", "upon", "a", "upon", "a", "time")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .take(3)
+                .distinct()
                 .subscribe(getObserver())
     }
 
-    private fun getObserver(): Observer<Int> {
-        return object : Observer<Int> {
+    private fun getObserver(): Observer<String> {
+        return object : Observer<String> {
 
             override fun onSubscribe(d: Disposable) {
                 Log.d(TAG, "onSubscribe: ${d.isDisposed}")
-                tv_result.appendText("Taking only first 3 integers")
+                tv_result.appendText("Fetching distinct items...")
             }
 
-            override fun onNext(t: Int) {
+            override fun onNext(t: String) {
                 tv_result.appendText("onNext: $t")
             }
 
@@ -58,7 +58,8 @@ class TakeExampleActivity : AppCompatActivity() {
     }
 
     private fun displayInitialData() {
-        tv_explanation.appendText("The Take operator emit only the first n items emitted by an Observable")
-        tv_explanation.appendText("Initial items are: 1, 2, 3, 4, 5, 6")
+        tv_explanation.appendText("The Distinct operator suppress duplicate items emitted by an Observable")
+        tv_explanation.appendText("Initial items are: \"Once\", \"Once\", \"upon\", \"a\", \"upon\", \"a\", \"time\"")
     }
+
 }
